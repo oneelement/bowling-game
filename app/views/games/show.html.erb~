@@ -1,0 +1,80 @@
+<div>
+  <%= render 'form' %>
+</div> 
+<div>
+
+<%- flash.each do |key, msg| -%>
+  <div id="<%= key %>">
+    <p style="float:right;"><%= link_to_function 'X', "Effect.Fade('#{key}')" %></p>
+    <p><%= msg %></p>
+    <div class="clear"></div>
+  </div>
+<%- end -%>
+
+</div>
+<div>
+<table class="table table-bordered">
+  <thead>
+    <th>Player</th>
+    <th>Frame 1</th>
+    <th>Frame 2</th>
+    <th>Frame 3</th>
+    <th>Frame 4</th>
+    <th>Frame 5</th>
+    <th>Frame 6</th>
+    <th>Frame 7</th>
+    <th>Frame 8</th>
+    <th>Frame 9</th>
+    <th>Frame 10</th>
+    <th>Total Score</th>
+  </thead>
+  <tbody>
+    <% @game.players.each do |player| %>
+      <tr>
+	<td><%= player.name %></td>
+        <% player.frames.each do |frame| %>
+          <td>
+            <div class="frame-score" >
+              <div class="cumulative-score"><%= frame.cumulative_score %></div>
+              <div class="frame first-bowl frame-<%= frame.frame_number %>">
+                <% if frame.first_bowl == 10 %>
+                  X
+                <% else %>
+                  <%= frame.first_bowl %>
+                <% end %>
+              </div>
+              <div class="frame second-bowl frame-<%= frame.frame_number %>">
+                <% if frame.second_bowl == 10 %>
+                  X
+                <% else %>
+                   <% if frame.second_bowl.to_i > 1 && (frame.first_bowl.to_i + frame.second_bowl.to_i == 10) %>
+                     /
+                   <% else %>
+                     <%= frame.second_bowl %>
+                   <% end %>                  
+                <% end %>
+              </div>
+              <div class="frame third-bowl frame-<%= frame.frame_number %>">
+                <% if frame.third_bowl == 10 %>
+                  X
+                <% else %>
+                  <%= frame.third_bowl %>
+                <% end %>
+              </div>
+            </div>
+          </td>
+        <% end %>
+        <td class="total-score"><%= player.total_score %></td>
+      </tr> 
+    <% end %>  
+  </tbody>
+</table>
+</div> 
+<div>
+  <% if @game.winner_name.present?  %>
+    <h3>Winner is <%= @game.winner_name %> with a score of <%= @game.winner_score %></h3>
+  <% end %>
+</div>
+<div>
+  <%= link_to('New Game', root_path, :class => 'btn btn-warning') %>
+</div>

@@ -1,0 +1,79 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+*/
+
+.container {
+  padding: 40px 20px;
+  margin-top: 40px;
+  min-height: 400px !important;
+  background-color: #F5F5F5;
+  border: 1px solid #E3E3E3;
+  border-radius: 4px 4px 4px 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset
+}
+
+.table {
+  background: #fff;
+}
+
+.frame-score {
+  position: relative;
+}
+
+.cumulative-score {
+  font-weight: bold;
+}
+
+.total-score {
+  font-weight: bold;
+  font-size: 16px;
+  color: green;
+}
+
+.frame {
+  position: absolute;
+  border: 1px solid #CCCCCC;
+  height: 15px;
+  width: 20px;
+  line-height: 15px;
+  text-align: center;
+}
+
+.first-bowl {  
+  right: 12px;
+  top: -9px;  
+}
+
+.second-bowl {
+  right: -9px;
+  top: -9px;
+}
+
+.first-bowl.frame-10 {
+  right: 33px;
+}
+
+.second-bowl.frame-10 {
+  right: 12px;
+}
+
+.third-bowl {
+  display: none;
+}
+
+.third-bowl.frame-10 {
+  display: inline-block;
+  right: -9px;
+  top: -9px;
+}
+

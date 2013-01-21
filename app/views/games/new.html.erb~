@@ -1,0 +1,16 @@
+<div class="">
+    <%= form_for @game do |f| %>
+      <div class="control-group">
+        <label class="control-label" for="number_of_players">Number of Players</label>
+        <div class="controls">
+
+	  <%= f.select(:number_of_players, options_for_select([[1, 1], [2, 2], [3, 3], [4, 4]])) %>
+          
+        </div>
+      </div>
+      <%= f.submit 'start bowling!'%>
+    <% end %>
+</div>
+<div class="">
+  <button class="offset3 span6 btn btn-success">start bowling!</button>
+</div>

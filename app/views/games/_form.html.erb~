@@ -1,0 +1,14 @@
+<%= form_tag('/games/play', :method => 'post', :class => '') do %>
+  <%= hidden_field_tag :frame_number, @game.frame_number %>
+  <%= hidden_field_tag :number_of_players, @game.number_of_players %>
+  <%= hidden_field_tag :current_bowl_number, @game.current_bowl_number %>
+  <%= hidden_field_tag :current_player_id, @game.current_player_id %>
+  <%= hidden_field_tag :game_id, @game._id %>
+  <div class="control-group">
+    <label class='control-label' for='pins_knocked_down'>Number of pins knocked down (max 10)</label>
+    <div class='controls'>
+      <%= text_field_tag :pins_knocked_down %>     
+    </div>
+  </div>
+  <%= submit_tag 'bowl', :class => 'btn btn-success' %>
+<% end %>
